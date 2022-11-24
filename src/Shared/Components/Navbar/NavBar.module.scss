@@ -1,0 +1,44 @@
+@import 'src/Assets/Style/variables';
+@import 'src/Assets/Style/utilities';
+
+.navBar {
+  background-color: $bg-primary-color;
+  border-bottom: 1px solid rgba(28,28,28,.6);
+  box-shadow: 1px 1px 30px rgba($theme-color, 0.5) !important;
+
+  span {  
+    a {
+      font-family: 'Lobster', cursive !important;
+      color: $text-color-primary !important;
+    }
+  }
+}
+
+.nav {
+  max-height: 100vh;
+
+  a {
+    color: rgba($text-color-primary, 0.55) !important;
+  
+    &.active {
+      color: $text-color-primary !important;
+    }
+  }
+}
+
+.btnToggle {
+  border-color: $theme-color;
+  background-color: $bg-secondary-color;
+
+  &:hover,
+  &:focus {
+    outline: 0;
+    box-shadow: none;
+  }
+
+  & + div {
+    @include media-breakpoint-down(lg) {
+      padding: 20px;
+    };
+  }
+}

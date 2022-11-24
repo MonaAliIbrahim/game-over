@@ -1,0 +1,119 @@
+@import './Assets/Style/variables';
+@import url('https://fonts.googleapis.com/css2?family=Cairo&family=Lobster');
+
+body {
+  margin: 0;
+  font-family: 'Cairo', serif !important;
+}
+
+* {
+  @include prefix(transition, '0.4s all ease');
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.navbar-nav .dropdown-menu a {
+  color: $bg-primary-color !important;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+  text-transform: capitalize; 
+}
+
+.more-btn {
+  @include btn-style($text-color-secondary, transparent);
+  @include prefix(transition, '0.2s all ease !important');
+  line-height: 26px !important;
+
+  &:hover {
+    @include btn-hover($text-color-primary, $bg-secondary-color);
+    box-shadow: 1px 1px 10px rgba($theme-color, 0.5);
+
+    span {
+      margin: 0 3px;
+    }
+
+    i {
+      @include prefix(transform, translateX(6px));
+    }
+  }
+
+  span {
+    font-size: 12px;
+  }
+}
+
+/** Form General Style **/
+.sign-img {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  img {
+    max-height: fit-content;
+    max-width: 100%;
+  }
+}
+
+.sign-content {
+  background-color: $bg-secondary-color !important;
+
+  img {
+    width: 100px;
+  }
+
+  .card-title {
+    font: {
+      weight: 500;
+      size: 24px;
+      family: 'Lobster', cursive !important;
+    }
+    line-height: 29px;
+    margin-bottom: 26px !important;
+    color: $text-color-secondary;
+  }
+
+  button {
+    background-color: #3a3f44;
+    border-color: #22241d;
+
+    &:hover {
+      color:$text-color-primary;
+      background-color: var(--bs-btn-active-bg);
+      border-color: var(--bs-btn-active-border-color);
+    }
+  }
+
+  .content-footer,
+  .card-footer {
+    font-size: 14px;
+    background-color: transparent;
+    color: $text-color-secondary;
+    border-top: 1px solid rgba($text-color-secondary, 0.2);
+  }
+}
+
+/** Scrollbar **/
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-button {
+  width: 100%;
+  height: 100%;
+ }
+
+::-webkit-scrollbar-thumb {
+ border-radius: 5px;
+ background-color: $theme-color;
+}
+
+::-webkit-scrollbar-corner {
+ background-color: $bg-primary-color;
+}
+
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-button {
+  background-color: $bg-primary-color;
+}

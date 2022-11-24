@@ -1,0 +1,32 @@
+/******************** Variables ********************/
+
+// Text Color Variables
+$text-color-primary: #fff;
+$text-color-secondary: #aaa;
+
+// Background Color Variables
+$bg-primary-color: #272A2F;
+$bg-semiprimary-color: #272B30;
+$bg-secondary-color: #32383E;
+
+$theme-color: #49acff;
+
+/******************** Mixins ********************/
+
+@mixin prefix($property, $value) {
+  @each $prefix in ('-webkit-', '-moz-', '-ms-', '-o-', '') {
+    #{$prefix}#{$property}: #{$value};
+  }
+}
+
+@mixin btn-style($color1, $color2) {
+  color: $color1 !important;
+  border-color: $color1 !important;
+  background-color: $color2 !important;
+}
+
+@mixin btn-hover($color1, $color2) {
+  color: $color1 !important;
+  border-color: $color2 !important;
+  background-color: $color2 !important;
+}

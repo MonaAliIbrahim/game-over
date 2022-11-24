@@ -1,0 +1,66 @@
+@import '../../Assets/Style/variables';
+
+.imageGame,
+.contentGame {
+  color: $text-color-secondary;
+  background-color: transparent;
+  border: 0;
+}
+
+.imageGame {
+  image {
+    @include prefix(border-radius, 6px);
+  }
+
+  span {
+    color: $theme-color;
+  }
+
+  a {
+    font: {
+      weight: 700;
+      size: 17px;
+    }
+    text-transform: uppercase;
+    color: $text-color-primary;
+    background-color: $theme-color;
+
+    &:hover {
+      @include btn-hover($theme-color, $text-color-primary);
+      box-shadow: 1px 1px 10px rgba($theme-color, 0.5) !important;
+    }
+  }
+}
+
+.contentGame {
+  span, 
+  h6 {
+    color: $theme-color;
+  }
+
+  span {
+    text-transform: uppercase;
+  }
+
+  h6 {
+    text-transform: capitalize;
+  }
+
+  & > div {
+    &:last-child {
+      h6 + p {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+.requireList {
+  & > div {
+    border: 0;
+    color: $text-color-secondary;
+    background-color: transparent;
+    padding-bottom: 4px;
+    font-size: 15px;
+  }
+}

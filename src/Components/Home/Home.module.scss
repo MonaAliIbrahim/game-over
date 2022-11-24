@@ -1,0 +1,76 @@
+@import '../../Assets/Style/variables';
+@import '../../Assets/Style/utilities';
+
+.homeContent {
+  text-align: center;
+  color: $text-color-secondary;
+  background: url('../../Assets/Images/palading.png') no-repeat center;
+  background-size: cover;
+
+  h2 {
+    font: {
+      weight: 500;
+      size: 40px;
+    }
+    line-height: 48px;
+
+    span {
+      color: $theme-color;
+    }
+  }
+
+  p {
+    font-size: 20px;
+    line-height: 30px;
+  }
+
+  a {
+    @include btn-style($text-color-secondary, transparent);
+
+    &:hover {
+      @include btn-hover($text-color-primary, $text-color-secondary);
+    }
+  }
+}
+
+.homeCards {
+  h2 {
+    font: {
+      size: 28px;
+      weight: 500;
+    }
+    line-height: 40px;
+    color: $text-color-secondary;
+  }
+
+  .card {
+    background-color: $bg-primary-color;
+    border: 0 solid rgba(0,0,0,.6);
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.1) !important;
+    @include prefix(border-radius, 0);
+  
+    &:hover {
+      @include media-breakpoint-up(sm) {       
+        box-shadow: 1px 1px 10px rgba($theme-color, 0.5) !important;
+        @include prefix(transform, scale(1.1));
+      }
+    }
+  
+    span {
+      text-transform: uppercase;
+      background-color: $theme-color !important;
+    }
+  }
+  
+  .title {
+    font: {
+      weight: 500;
+      size: 24px;
+    }
+    line-height: 29px;
+  
+    a {
+      color: $text-color-secondary;
+    }
+  }
+}

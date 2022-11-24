@@ -1,0 +1,57 @@
+@import '../../../Assets/Style/variables';
+
+.card {
+  background-color: $bg-primary-color;
+  border: 0 solid rgba(0,0,0,.6);
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.1) !important;
+  @include prefix(border-radius, 0);
+
+  &:hover {
+    box-shadow: 1px 1px 10px rgba($theme-color, 0.5) !important;
+    @include prefix(transform, scale(1.1));
+  }
+
+  span {
+    text-transform: uppercase;
+    background-color: $theme-color !important;
+  }
+}
+
+.title {
+  font: {
+    weight: 500;
+    size: 24px;
+  }
+  line-height: 29px;
+
+  a {
+    color: $text-color-secondary;
+  }
+}
+
+.subtitle {
+  color: $text-color-secondary;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 0;
+
+  & > i {
+    font-size: 12px;
+    padding: 4px 6px;
+    color: $bg-primary-color !important;
+    background-color: $text-color-secondary !important;
+  }
+
+  i {
+    color: $text-color-secondary;
+  }
+  
+  span {
+    color: $theme-color;
+    background-color: $bg-secondary-color !important;
+  }
+}
