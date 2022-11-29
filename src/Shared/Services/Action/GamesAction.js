@@ -8,7 +8,7 @@ import {
 const customError = 'Something went wrong, please wait a few seconds then reload the page';
 
 /**
- * This Function is used in
+ * This Function is used in All Components
  * it is used to get all games
 **/
 export function getAllGames() {
@@ -31,8 +31,8 @@ export function getAllGames() {
 
 
 /**
- * This Function is used in  
- * 
+ * This Function is used in Games Component
+ * It takes Sort-By Name and returns all games sorted 
 **/
  export function getSortedGame(sort) {
   return((dispatch) => {
@@ -54,8 +54,8 @@ export function getAllGames() {
 
 
 /**
- * This Function is used in
- * 
+ * This Function is used in Games Component
+ * It takes Platform Name and returns all games matched
 **/
 export function getGamesByPlatform(platform) {
   return((dispatch) => {
@@ -66,8 +66,8 @@ export function getGamesByPlatform(platform) {
       dispatch({type: FETCH_GAMES_SUCCESS, payload: response.data})
     })
     .catch((error) => {
-      if(error.message) {
-        dispatch({type: FETCH_GAMES_FAIL, payload: error.message})
+      if(error.response.data.status_message) {
+        dispatch({type: FETCH_GAMES_FAIL, payload: error.response.data.status_message})
       }else {
         dispatch({type: FETCH_GAMES_FAIL, payload: customError})
       }
@@ -77,8 +77,8 @@ export function getGamesByPlatform(platform) {
 
 
 /**
- * This Function is used in
- * 
+ * This Function is used in Games Component
+ * It takes Category Name and returns all games matched
 **/
 export function getGamesByCategory(category) {
   return((dispatch) => {
@@ -89,8 +89,8 @@ export function getGamesByCategory(category) {
       dispatch({type: FETCH_GAMES_SUCCESS, payload: response.data})
     })
     .catch((error) => {
-      if(error.message) {
-        dispatch({type: FETCH_GAMES_FAIL, payload: error.message})
+      if(error.response.data.status_message) {
+        dispatch({type: FETCH_GAMES_FAIL, payload: error.response.data.status_message})
       }else {
         dispatch({type: FETCH_GAMES_FAIL, payload: customError})
       }
@@ -100,8 +100,8 @@ export function getGamesByCategory(category) {
 
 
 /**
- * This Function is used in
- * 
+ * This Function is used in GameDetails Component
+ * It takes game id and returns all game details
 **/
 export function getGameDetails(id) {
   return((dispatch) => {

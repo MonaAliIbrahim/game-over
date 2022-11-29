@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
 import Form from 'react-bootstrap/Form';
 import Fade from 'react-bootstrap/Fade';
+import Flip from 'react-reveal/Flip';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { login, resetResponse } from '../../Shared/Services/Action/AuthAction';
@@ -108,7 +109,7 @@ export default function Login() {
   },[isLoggedIn, navigate])
 
   return (
-    <Row className="justify-content-center align-items-center">
+    <Row className="justify-content-center align-items-center m-auto">
       <Card className={styles.card}>
         <Card.Body className="p-0">
           <Row>
@@ -122,21 +123,23 @@ export default function Login() {
               <Alert variant={responseFlag === 'success' ? 'success' : 'danger'} className='text-capitalize p-2'>
                 {responseMsg}
               </Alert>}
-              <Form onSubmit={submitForm}>
-                <Form.Group className="mb-3">
-                  <Form.Control type="email" onChange={getUserData} name="email" placeholder="Email"/>
-                  <Fade in={showEmailError}>
-                    <div className='text-danger mt-2 text-capitalize' ref={emailErrorRef}></div>
-                  </Fade>
-                </Form.Group>
-                <Form.Group className="mb-3">
-                  <Form.Control type="password" onChange={getUserData} name="password" placeholder="Password"/>
-                  <Fade in={showPasswordError}>
-                    <div className='text-danger mt-2 text-capitalize' ref={passwordErrorRef}></div>
-                  </Fade>
-                </Form.Group>
-                <Button type="submit" className="d-block w-100">Login</Button>
-              </Form>
+              <Flip bottom cascade>
+                <Form onSubmit={submitForm}>
+                  <Form.Group className="mb-3">
+                    <Form.Control type="email" onChange={getUserData} name="email" placeholder="Email"/>
+                    <Fade in={showEmailError}>
+                      <div className='text-danger mt-2 text-capitalize' ref={emailErrorRef}></div>
+                    </Fade>
+                  </Form.Group>
+                  <Form.Group className="mb-3">
+                    <Form.Control type="password" onChange={getUserData} name="password" placeholder="Password"/>
+                    <Fade in={showPasswordError}>
+                      <div className='text-danger mt-2 text-capitalize' ref={passwordErrorRef}></div>
+                    </Fade>
+                  </Form.Group>
+                  <Button type="submit" className="d-block w-100">Login</Button>
+                </Form>
+              </Flip>
               <Card.Text className="content-footer pt-3 mt-4">
                 Not a member yet ? 
                 <Link to="/register" className="mx-2">Create Account</Link>

@@ -10,18 +10,16 @@ import NotFound from './Components/NotFound/NotFound';
 
 const routes = createBrowserRouter([
   { path: '', element: <MasterLayout/>, children: [
-      { index: true, element: <Home/> },
+      { index: true, element: <Home/>},
       { path: 'login', element: <Login/> },
       { path: 'register', element: <Register/> },
       { path: 'all', element: <All/> },       
-      { path: 'games/platform/:id', exact: true, element: <Games/>},
-      { path: 'games/sort/:id', exact: true, element: <Games/>},
-      { path: 'games/category/:id', exact: true, element: <Games/>},
+      { path: 'games/:type/:name', element: <Games/>},
       { path: 'game-details/:id', element: <GameDetails/>},
-      { path: '*', element: <Home/> }
+      { path: '*', element: <NotFound/>}
     ]
   },
-  { path: '*', element: <NotFound/> }
+  { path: '*', element: <MasterLayout/>}
 ])
 
 export default routes;

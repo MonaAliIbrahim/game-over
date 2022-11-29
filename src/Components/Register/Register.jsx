@@ -6,7 +6,9 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Fade from 'react-bootstrap/Fade';
+import Flip from 'react-reveal/Flip';
 import Alert from 'react-bootstrap/Alert';
+import Spinner from 'react-bootstrap/Spinner';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { signUp, resetResponse } from '../../Shared/Services/Action/AuthAction';
@@ -35,6 +37,7 @@ export default function Register() {
   const responseMsg = useSelector(state => state.auth.message);
   const responseFlag = useSelector(state => state.auth.flag);
   const [serverResponse, setServerResponse] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
   
@@ -69,9 +72,11 @@ export default function Register() {
 
   let Signup = (e) => {
     e.preventDefault();
+    setLoading(true);
     let error = checkValidation();
     if(error) {
       setErrors(error.details);
+      setLoading(false);
     }
     else {
       setServerResponse(false);
@@ -135,6 +140,7 @@ export default function Register() {
         setServerResponse(true);
       }
     }
+    setLoading(false);
   }, [responseMsg, responseFlag, navigate])
 
   useEffect(() => {
@@ -144,69 +150,77 @@ export default function Register() {
   }, [dispatch])
 
   return (
-    <Row className="justify-content-center align-items-center">
+    <Row className="justify-content-center align-items-center m-auto">
       <Col>
         <Card className={`sign-content py-2 px-4 px-md-5 ${styles.card}`}>
-        <Card.Body>
-          <Card.Img src={require('../../Assets/Images/logo.png')} className="d-inline-block"/>
-          <Card.Title className="py-3">Create My Account!</Card.Title>
-          {serverResponse && responseMsg &&
-            <Alert variant={responseFlag === 'success' ? 'success' : 'danger'} className='text-capitalize p-2'>
-              {responseMsg}
-            </Alert>}
-          <Form onSubmit={Signup} className="row">
-            <Col md={6}>
-              <Form.Group className="mb-3">
-                <Form.Control type="text" onChange={getUserData} name="first_name" placeholder="First Name" maxLength="20"/>
-                <Fade in={showFirstNameError}>
-                  <div className='text-danger mt-2 text-capitalize' ref={firstNameErrorRef}></div>
-                </Fade>
-              </Form.Group>
-            </Col>
-            <Col md={6}>
-              <Form.Group className="mb-3">
-                <Form.Control type="text" onChange={getUserData} name="last_name" placeholder="Last Name" maxLength="20"/>
-                <Fade in={showLastNameError}>
-                  <div className='text-danger mt-2 text-capitalize' ref={lastNameErrorRef}></div>
-                </Fade>
-              </Form.Group>
-            </Col>
-            <Col xs={12}>
-              <Form.Group className="mb-3">
-                <Form.Control type="email" onChange={getUserData} name="email" placeholder="Email"/>
-                <Fade in={showEmailError}>
-                  <div className='text-danger mt-2 text-capitalize' ref={emailErrorRef}></div>
-                </Fade>
-              </Form.Group>
-            </Col>
-            <Col xs={12}>
-              <Form.Group className="mb-3">
-                <Form.Control type="number" onChange={getUserData} name="age" placeholder="Age"/>
-                <Fade in={showAgeError}>
-                  <div className='text-danger mt-2 text-capitalize' ref={ageErrorRef}></div>
-                </Fade>
-              </Form.Group>
-            </Col>
-            <Col xs={12}>
-              <Form.Group className="mb-3">
-                <Form.Control type="password" onChange={getUserData} name="password" placeholder="Password"/>
-                <Fade in={showPasswordError}>
-                  <div className='text-danger mt-2 text-capitalize' ref={passwordErrorRef}></div>
-                </Fade>
-              </Form.Group>
-            </Col>
-            <Col xs={12}>
-              <Button type="submit" className="w-100">Register</Button>
-            </Col>
-          </Form>
-        </Card.Body>
-        <Card.Footer>
-          <Card.Text className="my-2">
-            Not a member yet ? 
-            <Link to="/login" className="mx-2">Log in</Link>
-          </Card.Text>
-        </Card.Footer>
-      </Card>
+          <Card.Body>
+            <Card.Img src={require('../../Assets/Images/logo.png')} className="d-inline-block"/>
+            <Card.Title className="py-3">Create My Account!</Card.Title>
+            {serverResponse && responseMsg &&
+              <Alert variant={responseFlag === 'success' ? 'success' : 'danger'} className='text-capitalize p-2'>
+                {responseMsg}
+              </Alert>}
+            <Flip bottom cascade>
+              <Form onSubmit={Signup} className="row">
+                <Col md={6}>
+                  <Form.Group className="mb-3">
+                    <Form.Control type="text" onChange={getUserData} name="first_name" placeholder="First Name" maxLength="20"/>
+                    <Fade in={showFirstNameError}>
+                      <div className='text-danger mt-2 text-capitalize' ref={firstNameErrorRef}></div>
+                    </Fade>
+                  </Form.Group>
+                </Col>
+                <Col md={6}>
+                  <Form.Group className="mb-3">
+                    <Form.Control type="text" onChange={getUserData} name="last_name" placeholder="Last Name" maxLength="20"/>
+                    <Fade in={showLastNameError}>
+                      <div className='text-danger mt-2 text-capitalize' ref={lastNameErrorRef}></div>
+                    </Fade>
+                  </Form.Group>
+                </Col>
+                <Col xs={12}>
+                  <Form.Group className="mb-3">
+                    <Form.Control type="email" onChange={getUserData} name="email" placeholder="Email"/>
+                    <Fade in={showEmailError}>
+                      <div className='text-danger mt-2 text-capitalize' ref={emailErrorRef}></div>
+                    </Fade>
+                  </Form.Group>
+                </Col>
+                <Col xs={12}>
+                  <Form.Group className="mb-3">
+                    <Form.Control type="number" onChange={getUserData} name="age" placeholder="Age"/>
+                    <Fade in={showAgeError}>
+                      <div className='text-danger mt-2 text-capitalize' ref={ageErrorRef}></div>
+                    </Fade>
+                  </Form.Group>
+                </Col>
+                <Col xs={12}>
+                  <Form.Group className="mb-3">
+                    <Form.Control type="password" onChange={getUserData} name="password" placeholder="Password"/>
+                    <Fade in={showPasswordError}>
+                      <div className='text-danger mt-2 text-capitalize' ref={passwordErrorRef}></div>
+                    </Fade>
+                  </Form.Group>
+                </Col>
+                <Col xs={12}>
+                  <Button type="submit" className="w-100" disabled={loading}>
+                    {loading ? <>
+                      <Spinner as="span" animation="grow" size="sm" role="status" aria-hidden="true"/>
+                      <Spinner as="span" animation="grow" size="sm" role="status" aria-hidden="true" className="mx-1"/>
+                      <Spinner as="span" animation="grow" size="sm" role="status" aria-hidden="true"/>
+                      </> : 'Register'}
+                  </Button>
+                </Col>
+              </Form>
+            </Flip>
+          </Card.Body>
+          <Card.Footer>
+            <Card.Text className="my-2">
+              Not a member yet ? 
+              <Link to="/login" className="mx-2">Log in</Link>
+            </Card.Text>
+          </Card.Footer>
+        </Card>
       </Col>
     </Row>
   )

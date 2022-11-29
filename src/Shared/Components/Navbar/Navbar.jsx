@@ -10,9 +10,6 @@ import { logout } from '../../Services/Action/AuthAction';
 import Categories from '../../Data/Categories.ts';
 import SortBy from '../../Data/Sort-By.ts';
 import styles from './NavBar.module.scss';
-import { 
-  getSortedGame, getGamesByPlatform, getGamesByCategory 
-} from '../../Services/Action/GamesAction';
 
 export default function Header() {
 
@@ -30,15 +27,15 @@ export default function Header() {
 
   useEffect(() => {
     if(userToken){
-      setIsLoggedIn(true) 
+      setIsLoggedIn(true);
     }else{
-      setIsLoggedIn(false)
+      setIsLoggedIn(false);
     }
   },[userToken])
 
   useEffect(() => {
-    setCategories(Categories)
-  },[])
+    setCategories(Categories);
+  },[categories])
 
   let renderCategoryCallbak = useCallback(() => {
     return(
@@ -66,20 +63,8 @@ export default function Header() {
   }, [])
 
   let getGamesByFilter = (e, type) => {
-    let param = e.target.innerText.toLowerCase();
-    switch(type) {
-      case 'platform':
-        dispatch(getGamesByPlatform(param));
-        navigate(`/games/platform/${param}`);
-      break;
-      case 'sort':
-        dispatch(getSortedGame(param));
-        navigate(`/games/sort/${param}`);
-      break;
-      default:
-        dispatch(getGamesByCategory(param));
-        navigate(`/games/category/${param}`);
-    }
+    let name = e.target.innerText.toLowerCase();
+    navigate(`/games/${type}/${name}`);
   }
   
   return (
@@ -98,16 +83,10 @@ export default function Header() {
           {isLoggedIn &&
           <Nav className={`me-auto my-2 my-lg-0 ${styles.nav}`} navbarScroll>
             <Nav.Item>
-              <Nav.Link to="" eventKey={1} as={Link}
-                className={({isActive}) => 'nav-link ' + (isActive ? styles.active : undefined)}>
-                Home
-              </Nav.Link>
+              <Nav.Link to="" eventKey={1} as={Link}>Home</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link to="/all" eventKey={2} as={Link}
-                className={({isActive}) => 'nav-link ' + (isActive ? styles.active : undefined)}>
-                All
-              </Nav.Link>
+              <Nav.Link to="/all" eventKey={2} as={Link}>All</Nav.Link>
             </Nav.Item>
             <NavDropdown 
               title="Platforms" 

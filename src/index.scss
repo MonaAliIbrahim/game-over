@@ -4,6 +4,7 @@
 body {
   margin: 0;
   font-family: 'Cairo', serif !important;
+  overflow: hidden;
 }
 
 * {
@@ -19,6 +20,13 @@ a {
   text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
   text-transform: capitalize; 
 }
+
+.nav-item:not(.dropdown) {
+  .active {
+    color: $theme-color !important;
+    font-weight: 700;
+  }
+} 
 
 .more-btn {
   @include btn-style($text-color-secondary, transparent);

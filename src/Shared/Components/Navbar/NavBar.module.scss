@@ -20,8 +20,8 @@
   a {
     color: rgba($text-color-primary, 0.55) !important;
   
-    &.active {
-      color: $text-color-primary !important;
+    &:hover {
+      color: $theme-color !important;
     }
   }
 }
@@ -39,6 +39,6 @@
   & + div {
     @include media-breakpoint-down(lg) {
       padding: 20px;
-    };
+    }
   }
 }

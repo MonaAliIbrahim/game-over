@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import Badge from 'react-bootstrap/Badge';
+import Fade from 'react-reveal/Fade';
 import styles from './Home.module.scss';
 import Loading from '../../Shared/Components/Loading/Loading';
 import { Link, useNavigate } from 'react-router-dom';
@@ -27,6 +28,30 @@ export default function Home() {
     dispatch(getSortedGame('popularity'));
   },[dispatch])
 
+  const renderGames  = useCallback(() => 
+    (games.slice(0,3).map(game => 
+      (<Col md={6} lg={4} key={game.id}>
+          <Fade cascade>
+            <Card className={styles.card}> 
+              <Card.Img variant="top" src={game.thumbnail} />
+              <Card.Body className='py-4 px-3'>
+                <div className="d-flex justify-content-between align-items-center">                
+                  <Card.Title className={styles.title}>
+                    <Link to={`/game-details/${game.id}`} className="stretched-link">
+                      {game.title.length > 15 ? `${game.title.slice(0,15)}...` : game.title}
+                    </Link>
+                  </Card.Title>
+                  <Card.Text>
+                    <Badge className='text-white p-2'>Free</Badge>
+                  </Card.Text>
+                </div>
+              </Card.Body>
+            </Card>
+          </Fade>
+        </Col>)
+      )
+    ), [games])
+
   return (
     <div>
       <div className={`${styles.homeContent} py-5 px-3`}>
@@ -45,25 +70,7 @@ export default function Home() {
         </h2>
         {games.length > 0 ? 
           <Row className="gy-5 px-4 gx-md-5">
-            {games.slice(0,3).map(game => 
-              (<Col md={6} lg={4} key={game.id}>
-                  <Card className={styles.card}> 
-                    <Card.Img variant="top" src={game.thumbnail} />
-                    <Card.Body className='py-4 px-3'>
-                      <div className="d-flex justify-content-between align-items-center">                
-                        <Card.Title className={styles.title}>
-                          <Link to={`/game-details/${game.id}`} className="stretched-link">
-                            {game.title.length > 15 ? `${game.title.slice(0,15)}...` : game.title}
-                          </Link>
-                        </Card.Title>
-                        <Card.Text>
-                          <Badge className='text-white p-2'>Free</Badge>
-                        </Card.Text>
-                      </div>
-                    </Card.Body>
-                  </Card>
-                </Col>)
-              )}
+            {renderGames()}
           </Row> : <Loading/>}
       </div>
     </div>
