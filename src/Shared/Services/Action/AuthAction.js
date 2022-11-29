@@ -27,7 +27,7 @@ export function signUp(user) {
     })
     .catch((error) => {
       if(error.message) {
-        dispatch({type: SIGNUP_FAIL, payload: error, flag: 'error'})
+        dispatch({type: SIGNUP_FAIL, payload: error.message, flag: 'error'})
       }else {
         dispatch({type: SIGNUP_FAIL, payload: 'something went wrong, please try again', flag: 'error'})
       }
@@ -57,7 +57,7 @@ export function login(user) {
     })
     .catch((error) => {
       if(error.message) {
-        dispatch({type: LOGIN_FAIL, payload: error, flag: 'error'})
+        dispatch({type: LOGIN_FAIL, payload: error.message, flag: 'error'})
       }else {
         dispatch({type: LOGIN_FAIL, payload: 'something went wrong, please try again', flag: 'error'})
       }
