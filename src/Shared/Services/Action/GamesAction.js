@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GAME_BASE_URL, header } from '../api-config';
+import { GAME_BASE_URL, config } from '../api-config';
 import {
   FETCH_GAMES_REQUEST, FETCH_GAMES_SUCCESS, FETCH_GAMES_FAIL, 
   FETCH_DETAILS_REQUEST, FETCH_DETAILS_SUCCESS, FETCH_DETAILS_FAIL
@@ -15,7 +15,7 @@ export function getAllGames() {
   return((dispatch) => {
     dispatch({type: FETCH_GAMES_REQUEST});
 
-    axios.get(`${GAME_BASE_URL}/games`, {headers: header})
+    axios.get(`${GAME_BASE_URL}/games`, config)
     .then((response) => {
       dispatch({type: FETCH_GAMES_SUCCESS, payload: response.data})
     })
@@ -38,7 +38,7 @@ export function getAllGames() {
   return((dispatch) => {
     dispatch({type: FETCH_GAMES_REQUEST});
 
-    axios.get(`${GAME_BASE_URL}/games?sort-by=${sort}`, {headers: header})
+    axios.get(`${GAME_BASE_URL}/games?sort-by=${sort}`, config)
     .then((response) => {
       dispatch({type: FETCH_GAMES_SUCCESS, payload: response.data})
     })
@@ -61,7 +61,7 @@ export function getGamesByPlatform(platform) {
   return((dispatch) => {
     dispatch({type: FETCH_GAMES_REQUEST});
 
-    axios.get(`${GAME_BASE_URL}/games?platform=${platform}`, {headers: header})
+    axios.get(`${GAME_BASE_URL}/games?platform=${platform}`, config)
     .then((response) => {
       dispatch({type: FETCH_GAMES_SUCCESS, payload: response.data})
     })
@@ -84,7 +84,7 @@ export function getGamesByCategory(category) {
   return((dispatch) => {
     dispatch({type: FETCH_GAMES_REQUEST});
 
-    axios.get(`${GAME_BASE_URL}/games?category=${category}`, {headers: header})
+    axios.get(`${GAME_BASE_URL}/games?category=${category}`, config)
     .then((response) => {
       dispatch({type: FETCH_GAMES_SUCCESS, payload: response.data})
     })
@@ -107,7 +107,7 @@ export function getGameDetails(id) {
   return((dispatch) => {
     dispatch({type: FETCH_DETAILS_REQUEST});
 
-    axios.get(`${GAME_BASE_URL}/game?id=${id}`, {headers: header})
+    axios.get(`${GAME_BASE_URL}/game?id=${id}`, config)
     .then((response) => {
       dispatch({type: FETCH_DETAILS_SUCCESS, payload: response.data})
     })

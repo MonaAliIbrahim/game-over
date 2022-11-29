@@ -21,12 +21,10 @@ export default function Home() {
   useEffect(() => {
     if(!isLoggedIn) {
       navigate('/login')
+    }else {
+      dispatch(getSortedGame('popularity'));
     }
-  },[isLoggedIn, navigate])
-
-  useEffect(() => {
-    dispatch(getSortedGame('popularity'));
-  },[dispatch])
+  },[])
 
   const renderGames  = useCallback(() => 
     (games.slice(0,3).map(game => 

@@ -6,6 +6,12 @@ import {
   RESET_AUTH, LOGOUT
 } from './types';
 
+const config = {
+  mode: 'no-cors',
+  headers: {
+    'Content-Type':  'application/json',
+  }
+}
 
 /** 
  * This Function is used in Register Component
@@ -17,7 +23,7 @@ export function signUp(user) {
 
     dispatch({type: SIGNUP_REQUEST});
 
-    axios.post(`${AUTH_BASE_URL}/signup`, user)
+    axios.post(`${AUTH_BASE_URL}/signup`, user, config)
     .then((response) => {
       if(response.data.message === 'success'){
         dispatch({type: SIGNUP_SUCCESS, payload: 'Your Account created successfuly', flag: 'success'})
@@ -46,7 +52,7 @@ export function login(user) {
 
     dispatch({type: LOGIN_REQUEST});
 
-    axios.post(`${AUTH_BASE_URL}/signin`, user)
+    axios.post(`${AUTH_BASE_URL}/signin`, user, config)
     .then((response) => {
       if(response.data.message === 'success'){
         localStorage.setItem('userToken', response.data.token);

@@ -3,18 +3,26 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllGames } from '../../Shared/Services/Action/GamesAction';
+import { useNavigate } from 'react-router-dom';
 import Loading from '../../Shared/Components/Loading/Loading';
 import GameCard from '../../Shared/Components/GameCard/GameCard';
 
 export default function All() {
+
+  const isLoggedIn = localStorage.getItem('userToken');
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
   const games = useSelector(state => state.games.gameList);
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    dispatch(getAllGames());
-  },[dispatch])
+    if(!isLoggedIn) {
+      navigate('/login')
+    }else {
+      dispatch(getAllGames());
+    }
+  },[])
 
   return (
     games.length > 0 ? 
