@@ -20,6 +20,7 @@ const routes = createBrowserRouter([
     ]
   },
   { path: '*', element: <MasterLayout/>}
-])
+]
+, { basename: '/game-over/' })
 
 export default routes;
