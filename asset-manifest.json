@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/game-over/static/css/main.df09c291.css",
-    "main.js": "/game-over/static/js/main.ed6a6da8.js",
+    "main.js": "/game-over/static/js/main.0955dd4b.js",
     "static/css/712.97ea86c3.chunk.css": "/game-over/static/css/712.97ea86c3.chunk.css",
     "static/js/712.5198683d.chunk.js": "/game-over/static/js/712.5198683d.chunk.js",
     "static/css/783.ceb63fc8.chunk.css": "/game-over/static/css/783.ceb63fc8.chunk.css",
@@ -9,7 +9,7 @@
     "static/css/162.ceb63fc8.chunk.css": "/game-over/static/css/162.ceb63fc8.chunk.css",
     "static/js/162.276ef4e5.chunk.js": "/game-over/static/js/162.276ef4e5.chunk.js",
     "static/css/439.d5912dde.chunk.css": "/game-over/static/css/439.d5912dde.chunk.css",
-    "static/js/439.25febf93.chunk.js": "/game-over/static/js/439.25febf93.chunk.js",
+    "static/js/439.15e9d520.chunk.js": "/game-over/static/js/439.15e9d520.chunk.js",
     "static/js/787.ca3fd3b1.chunk.js": "/game-over/static/js/787.ca3fd3b1.chunk.js",
     "static/media/fa-solid-900.ttf": "/game-over/static/media/fa-solid-900.b1a653db79258eeccc5d.ttf",
     "static/media/palading.png": "/game-over/static/media/palading.0fddd1fbe0a5e0a0af93.png",
@@ -25,7 +25,7 @@
     "static/media/fa-v4compatibility.woff2": "/game-over/static/media/fa-v4compatibility.4ee7f902d88f819e251c.woff2",
     "index.html": "/game-over/index.html",
     "main.df09c291.css.map": "/game-over/static/css/main.df09c291.css.map",
-    "main.ed6a6da8.js.map": "/game-over/static/js/main.ed6a6da8.js.map",
+    "main.0955dd4b.js.map": "/game-over/static/js/main.0955dd4b.js.map",
     "712.97ea86c3.chunk.css.map": "/game-over/static/css/712.97ea86c3.chunk.css.map",
     "712.5198683d.chunk.js.map": "/game-over/static/js/712.5198683d.chunk.js.map",
     "783.ceb63fc8.chunk.css.map": "/game-over/static/css/783.ceb63fc8.chunk.css.map",
@@ -33,11 +33,11 @@
     "162.ceb63fc8.chunk.css.map": "/game-over/static/css/162.ceb63fc8.chunk.css.map",
     "162.276ef4e5.chunk.js.map": "/game-over/static/js/162.276ef4e5.chunk.js.map",
     "439.d5912dde.chunk.css.map": "/game-over/static/css/439.d5912dde.chunk.css.map",
-    "439.25febf93.chunk.js.map": "/game-over/static/js/439.25febf93.chunk.js.map",
+    "439.15e9d520.chunk.js.map": "/game-over/static/js/439.15e9d520.chunk.js.map",
     "787.ca3fd3b1.chunk.js.map": "/game-over/static/js/787.ca3fd3b1.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.df09c291.css",
-    "static/js/main.ed6a6da8.js"
+    "static/js/main.0955dd4b.js"
   ]
 }
