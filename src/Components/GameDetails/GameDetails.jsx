@@ -32,8 +32,7 @@ export default function GameDetails() {
   }, [game, serverError])
 
   return (
-    !toggleLoading ? <Loading /> :
-    Object.keys(game).length > 0 ?
+    Object.keys(game).length > 0 ?   
       <Row className="mt-5">
         <Col md="6">
           <Card className={`${styles.imageGame} my-3`}>
@@ -114,12 +113,14 @@ export default function GameDetails() {
           </Card>
         </Col>
       </Row>
-  : <Row className="justify-content-center align-items-center">
-      <Col md="8">
-        <Fade cascade>
-          <Alert variant="danger" className='text-center'>{serverError}</Alert>
-        </Fade>
-      </Col>
-    </Row>
+    : serverError.length > 0 ?
+    <Row className="justify-content-center align-items-center">
+        <Col md="8">
+          <Fade cascade>
+            <Alert variant="danger" className='text-center'>{serverError}</Alert>
+          </Fade>
+        </Col>
+      </Row>
+    : <Loading /> 
   )
 }
