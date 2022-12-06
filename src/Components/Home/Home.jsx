@@ -8,7 +8,7 @@ import styles from './Home.module.scss';
 import Loading from '../../Shared/Components/Loading/Loading';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getSortedGame } from '../../Shared/Services/Action/GamesAction';
+import { getSortedGame } from '../../Shared/Redux/GamesSlice';
 
 export default function Home() {
 

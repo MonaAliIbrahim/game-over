@@ -4,11 +4,11 @@
 body {
   margin: 0;
   font-family: 'Cairo', serif !important;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 * {
-  @include prefix(transition, '0.4s all ease');
+  @include prefix(transition, 0.4s all ease);
 }
 
 a {

@@ -1,5 +1,5 @@
-const AUTH_BASE_URL = 'https://route-egypt-api.herokuapp.com';
-
+// const AUTH_BASE_URL = 'https://route-egypt-api.herokuapp.com';
+const AUTH_BASE_URL = 'https://sticky-note-fe.vercel.app';
 const GAME_BASE_URL = 'https://free-to-play-games-database.p.rapidapi.com/api';
 
 const config = {

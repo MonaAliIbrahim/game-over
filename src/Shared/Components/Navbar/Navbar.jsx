@@ -6,7 +6,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { logout } from '../../Services/Action/AuthAction';
+import { resetResponse } from '../../Redux/AuthSlice';
 import Categories from '../../Data/Categories.ts';
 import SortBy from '../../Data/Sort-By.ts';
 import styles from './NavBar.module.scss';
@@ -20,7 +20,8 @@ export default function Header() {
   const [categories, setCategories] = useState([]);
 
   let handleLogout = () => {
-    dispatch(logout());
+    localStorage.removeItem('userToken');
+    dispatch(resetResponse());
     setIsLoggedIn(false);
     navigate('/login');
   }

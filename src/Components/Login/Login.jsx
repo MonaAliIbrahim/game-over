@@ -10,7 +10,7 @@ import Fade from 'react-bootstrap/Fade';
 import Flip from 'react-reveal/Flip';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { login, resetResponse } from '../../Shared/Services/Action/AuthAction';
+import { login, resetResponse } from '../../Shared/Redux/AuthSlice';
 import Joi from 'joi';
 
 export default function Login() {

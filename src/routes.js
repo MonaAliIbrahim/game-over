@@ -1,12 +1,13 @@
+import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import MasterLayout from './MasterLayout/MasterLayout';
 import Login from "./Components/Login/Login";
 import Register from './Components/Register/Register';
-import Home from "./Components/Home/Home";
-import All from "./Components/All/All";
-import Games from './Components/Games/Games';
-import GameDetails from './Components/GameDetails/GameDetails';
 import NotFound from './Components/NotFound/NotFound';
+const Home = React.lazy(() => import("./Components/Home/Home"));
+const All = React.lazy(() => import("./Components/All/All"));
+const Games = React.lazy(() => import("./Components/Games/Games"));
+const GameDetails = React.lazy(() => import("./Components/GameDetails/GameDetails"));
 
 const routes = createBrowserRouter([
   { path: '', element: <MasterLayout/>, children: [

@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from 'react';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllGames } from '../../Shared/Services/Action/GamesAction';
+import { getAllGames } from '../../Shared/Redux/GamesSlice';
 import { useNavigate } from 'react-router-dom';
 import Loading from '../../Shared/Components/Loading/Loading';
 import GameCard from '../../Shared/Components/GameCard/GameCard';

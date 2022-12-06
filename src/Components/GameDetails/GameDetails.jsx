@@ -5,17 +5,20 @@ import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Badge from 'react-bootstrap/Badge';
-import Carousel from 'react-bootstrap/Carousel'
+import Carousel from 'react-bootstrap/Carousel';
+import Alert from 'react-bootstrap/Alert';
+import Fade from 'react-reveal/Fade';
 import Loading from '../../Shared/Components/Loading/Loading';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getGameDetails } from '../../Shared/Services/Action/GamesAction';
+import { getGameDetails } from '../../Shared/Redux/GamesSlice';
 
 export default function GameDetails() {
 
   const { id } = useParams();
   const dispatch = useDispatch();
   const game = useSelector(state => state.games.game);
+  const serverError = useSelector(state => state.games.error);
   const [toggleLoading, setToggleLoading] = useState(false);
 
   useLayoutEffect(() => {
@@ -23,13 +26,14 @@ export default function GameDetails() {
   }, [dispatch, id])
 
   useEffect(() => {
-    if(game && Object.keys(game).length > 0) {
+    if((game && Object.keys(game).length > 0) || serverError) {
       setToggleLoading(true);
     }
-  }, [game])
+  }, [game, serverError])
 
   return (
     !toggleLoading ? <Loading /> :
+    Object.keys(game).length > 0 ?
       <Row className="mt-5">
         <Col md="6">
           <Card className={`${styles.imageGame} my-3`}>
@@ -110,5 +114,12 @@ export default function GameDetails() {
           </Card>
         </Col>
       </Row>
+  : <Row className="justify-content-center align-items-center">
+      <Col md="8">
+        <Fade cascade>
+          <Alert variant="danger" className='text-center'>{serverError}</Alert>
+        </Fade>
+      </Col>
+    </Row>
   )
 }

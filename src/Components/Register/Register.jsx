@@ -11,7 +11,7 @@ import Alert from 'react-bootstrap/Alert';
 import Spinner from 'react-bootstrap/Spinner';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { signUp, resetResponse } from '../../Shared/Services/Action/AuthAction';
+import { signUp, resetResponse } from '../../Shared/Redux/AuthSlice';
 import Joi from 'joi';
 
 export default function Register() {

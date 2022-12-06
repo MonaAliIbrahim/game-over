@@ -9,7 +9,7 @@ import GameCard from '../../Shared/Components/GameCard/GameCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getSortedGame, getGamesByPlatform, getGamesByCategory } 
-  from '../../Shared/Services/Action/GamesAction';
+  from '../../Shared/Redux/GamesSlice';
 
 export default function Games() {
   
